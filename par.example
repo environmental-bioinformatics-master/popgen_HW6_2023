@@ -1,5 +1,5 @@
-genotypename:	[INFILE_NAME].eigenstratgeno
+genotypename:	[INFILE_NAME].geno
 snpname:	[INFILE_NAME].snp
-indivname:	[SAMPLE_INFO_FILENAME].indiv
+indivname:	[SAMPLE_INFO_FILENAME].ind
 evecoutname:	[OUTFILE_NAME].evec
 evaloutname:	[OUTFILE_NAME].eval
