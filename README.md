@@ -79,8 +79,7 @@ Heterosygosity must under 70% to retain a SNP\
 Minor allele must be present at least twice overall to retain a SNP\
 Retain one SNP per locus (= RAD tag) at random \
 Calculate F-statistics\
-Export files in vcf, STRUCTURE, and Genepop formats\
-Number of threads to run on: 4 (be sure to run with slurm and request 4 nodes)
+Export files in vcf and Genepop formats
 
 Note: By now you all know my soapbox about calculating linkage disequilibrium directly rather than assuming your SNPs are unlinked if you only use one per RAD tag. However, that is a standard practice (much as I disagree with it), and in the interests of streamlining this HW, go ahead and use this standard approach which is already built into Stacks.
 
@@ -109,11 +108,9 @@ Rabbit Slough:
 
 # Step 5: Convert file format and run PCA
 
-There are a lot of different places you could go with your SNP panel from here. We're going to use the eigensoft program to conduct a Principal Components Analysis of the cleaned SNPs you generated with Stacks. Unfortunately, like almost every population genomics software, it requires a special input format. The python file we used to filter GATK SNPs in class will convert to this format, but you will first have to export the SNPs into tabular format from the Stacks-generated .vcf file.
+There are a lot of different places you could go with your SNP panel from here. We're going to use the eigensoft program to conduct a Principal Components Analysis of the cleaned SNPs you generated with Stacks. Unfortunately, like almost every population genomics software, it requires a special input format. I have provided two python scripts written by Iain Mathieson to convert your Stacks-generated `.vcf` file to the multiple input files required by eigenstrat.
 
-To create the SNP table, deactivate your Stacks conda environment and activate your `gatk` conda environment from class.
-
-Run the resulting table through the `SNP_qual_filter.py` filtering script (in repo), setting "dummy" quality and coverage parameters (eg, min coverage of 1), so the script will produce output files in eigenstrat format without removing any SNPs since you have already filtered SNPs in Stacks.
+Convert your Stacks-provided `.vcf` file by using `vcf2eigensoft.py`. The other file, `gdc.py`, contains functions that will be called by `vcf2eigensoft.py` so needs to be in the same firectory for the conversion to work.
 
 Deactivate the `gatk` conda environment and activate the `popgen` conda environment you should have already set up for class. If you don't have that environment, set it up like this:
 ```
