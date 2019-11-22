@@ -1,5 +1,8 @@
 #! /usr/bin/python
 
+# Written by Iain Mathieson
+# GitHub: https://github.com/mathii/gdc
+
 #Shared functions
 import gzip, pdb
 
