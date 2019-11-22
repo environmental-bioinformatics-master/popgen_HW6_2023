@@ -57,7 +57,38 @@ Typically, you would run this part of the process multiple times with different 
 `http://catchenlab.life.illinois.edu/stacks/param_tut.php`
 
 Use the following parameters to form stacks and identify SNPs:\
-Minimum stackcoverage: 3\
-Number of mismatches allowed between loci: 3\
+Minimum coverage to create a stack: 3\
+Number of mismatches allowed between stacks (within individuals): 2\
+Number of mismatches allowed between loci (between individuals): 3\
+Number of threads to run on: 4 (be sure to run with slurm and request 4 nodes)
 
+This will take approximately ?? hours on Poseidon using 4 threads.
 
+Note that this calculates "raw" SNPs, without any QC or filtering for coverage and completeness. For each population, give the following information:\
+Bear Paw polymorphic sites:\
+Bear Paw private alleles:\
+Rabbit Slough polymorphic sites:\
+Rabbit Slough private alleles:\
+
+# Step 4: Filter SNPs and calculate population genomic stats
+
+Now, use the `populations` application of Stacks to go back through your raw SNPs, apply some filtering criteria, and conduct basic popgen statistics. Set the following parameters:\
+Locus must be present in **both** populations\
+Locus must be present in at least 7 individuals in each population\
+Heterosygosity must under 70% to retain a SNP\
+Minor allele must be present at least twice overall to retain a SNP\
+Retain one SNP per locus (= RAD tag) at random \
+Calculate F-statistics\
+Export files in vcf, STRUCTURE, and Genepop formats\
+Number of threads to run on: 4 (be sure to run with slurm and request 4 nodes)
+
+Note: By now you all know my soapbox about calculating linkage disequilibrium directly rather than assuming your SNPs are unlinked if you only use one per RAD tag. However, that is a standard practice (much as I disagree with it), and in the interests of streamlining this HW, go ahead and use this standard approach which is already built into Stacks.
+
+Now that you have applied some QC for SNP coverage and completeness,give the following information again for each population:\
+Bear Paw polymorphic sites:\
+Bear Paw private alleles:\
+Rabbit Slough polymorphic sites:\
+Rabbit Slough private alleles:\
+
+What is the Fst between the Bear Paw Lake and Rabbit Slough populations?\
+Answer:
