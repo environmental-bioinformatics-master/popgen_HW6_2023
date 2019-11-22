@@ -48,7 +48,16 @@ What code did you use to demultiplex your reads?:
 ```
 ```
 
-What perentage of reads were retained after demultiplexing?\
+What percentage of reads were retained after demultiplexing?\
 Answer:
 
-# Step 3: 
+# Step 3: Identify SNPs
+
+Typically, you would run this part of the process multiple times with different stack quality and distance parameters to figure out a good set of parameters for your data set. For this homework, we won't ask you to optimize parameters, but be aware that this is a best practice with experimental data. These parameters and how they affect SNP identification are explained in detail in the protocol paper and on the Stacks website here:\
+`http://catchenlab.life.illinois.edu/stacks/param_tut.php`
+
+Use the following parameters to form stacks and identify SNPs:\
+Minimum stackcoverage: 3\
+Number of mismatches allowed between loci: 3\
+
+
