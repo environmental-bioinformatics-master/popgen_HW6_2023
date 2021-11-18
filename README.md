@@ -4,7 +4,7 @@ HW5 - Stacks pipeline and population genomics
 For this homework, we're going to use the Stacks pipeline to identify and genotype SNPs in two populations of threespine sticklebacks (*Gasterosteus aculeatus*), and perform some basic population genomic comparisons. Use the Stacks protocol (`Rochette & Catchen 2017.pdf`) and website (`http://catchenlab.life.illinois.edu/stacks/`) for guidance on how to process samples; you are also welcome to use any other online resources you like.
 
 If you used additional resources, please list them here:\
-Answer:
+>Answer:
 
 I will give you a bare-bones walkthrough of the analyses to perform and the parameters to set for this assignment. We will be using a different (much smaller!) set of example data than that used in the protocol, to ease the computational burden on Poseidon and save time. So don't be alarmed that the protocol says it takes one week to one month, but please don't wait until the last minute either.
 
@@ -35,7 +35,7 @@ Remember to include (and comment!) the code you used to retrieve these files in 
 
 # Step 2: Demultiplex reads
 
-Now, you need to demultiplex your reads using the barcode information in file you just retrieved from Zenodo. Use these parameters:\
+Now, you need to demultiplex your reads using the barcode information in the file you just retrieved from Zenodo. Use these parameters:\
 Restriction enzyme: sbfI\
 Clean reads\
 Discard low-quality reads\
