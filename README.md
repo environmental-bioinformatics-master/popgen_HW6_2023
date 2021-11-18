@@ -51,6 +51,8 @@ Answer:
 Typically, you would run this part of the process multiple times with different stack quality and distance parameters to figure out a good set of parameters for your data set. For this homework, we won't ask you to optimize parameters, but be aware that this is a best practice with experimental data. These parameters and how they affect SNP identification are explained in detail in the protocol paper and on the Stacks website here:\
 `http://catchenlab.life.illinois.edu/stacks/param_tut.php`
 
+While you could potentially run Stacks in a reference-aware way using the stickleback genome, for this homework assume there is no genome and run the _de novo_ protocol.
+
 Use the following parameters to form stacks and identify SNPs:\
 Minimum coverage to create a stack: 3\
 Number of mismatches allowed between stacks (within individuals): 2\
@@ -61,17 +63,25 @@ This will take approximately 2 hours on Poseidon using 4 threads.
 
 Remember to include (and comment!) the code you used to identify SNPs in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
 
-Note that this calculates "raw" SNPs, without any QC or filtering for coverage and completeness. For each population, give the following information:\
+For each population, give the following information **pre-filtering**:\
 *Bear Paw:*\
+  Range of coverage depth (lowest and highest):\
   Polymorphic sites:\
   Private alleles:\
 *Rabbit Slough:*\
+  Range of coverage depth (lowest and highest):\
   Polymorphic sites:\
   Private alleles:
+  
+What's the difference between a "locus" and a "SNP", as Stacks uses those terms?
+>Answer:
+
+What does the "private alleles" count tell you?
+>Answer:
 
 # Step 4: Filter SNPs and calculate population genomic stats
 
-Now, use the `populations` application of Stacks to go back through your raw SNPs, apply some filtering criteria, and conduct basic popgen statistics. Set the following parameters:\
+Now, use the `populations` application of Stacks to go back through your raw SNPs, apply some additional filtering criteria, and conduct basic popgen statistics. Set the following parameters:\
 Locus must be present in **both** populations\
 Locus must be present in at least 7 individuals in each population\
 Heterozygosity must under 70% to retain a SNP\
@@ -80,22 +90,27 @@ Retain one SNP per locus (= RAD tag) at random \
 Calculate F-statistics\
 Export files in vcf and Genepop formats
 
-Note: By now you all know my soapbox about calculating linkage disequilibrium directly rather than assuming your SNPs are unlinked if you only use one per RAD tag. However, that is a standard practice, and in the interests of streamlining this HW, go ahead and use this standard approach which is already built into Stacks.
+Note: I feel very strongly that it is a best practice to calculate linkage disequilibrium directly rather than assuming your SNPs are unlinked if you only use one per RAD tag. However, that is a standard practice, and in the interests of streamlining this HW, go ahead and use this standard approach which is already built into Stacks.
 
 Remember to include (and comment!) the code you used to filter SNPs in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
 
 Now that you have applied some QC for SNP coverage and completeness,give the following information again for each population:\
 *Bear Paw:*\
+  Range of coverage depth (lowest and highest):\
   Polymorphic sites:\
   Private alleles:\
 *Rabbit Slough:*\
+  Range of coverage depth (lowest and highest):\
   Polymorphic sites:\
   Private alleles:
   
-This analysis will create a number of output files. Explore them until you find the overall pairwise FST between the two populations, and summary statistics (Fis, Pi, expected and observed heterozygo) for each population.
+This analysis will create a number of output files. Explore them until you find the overall pairwise Fst between the two populations, and summary statistics (Fis, Pi, expected and observed heterozygo) for each population.
 
 What is the Fst between the Bear Paw Lake and Rabbit Slough populations?\
-Answer:
+>Answer:
+
+What does this Fst tell you about connectivity among these two populations?
+>Answer:
 
 What are the following summary statistics for each population, calculated at variant sites only?\
 *Bear Paw:*\
@@ -139,21 +154,26 @@ Now, let's take a look! We are most interested in the individual PC loadings in 
 In the `*log.txt` file, look for the row starting with `## Tracy-Widom statistics`. This gives the eigenvalue (percentage of variance explained) and significance for each numbered principal components axis.
 
 How many principal components axes are significant?\
-Answer:
+>Answer:
 
 For each significant principal components axis, give the following:\
-Eigenvalue:\
-p-value:
+>Eigenvalue:\
+>p-value:
 
 The `.evec` files gives the PC loading for each sample on the first 10 principal components axes. Axes are labeled by their eigenvalues, ordered from highest (= most influence on population structure) to lowest.
 
-Using python or R, make a scatter plot of the individuals, using the loadings from the `.evec` file and color-coding individuals by site. Feel free to do this plotting on Poseidon or your local computer, whatever you're most comfortable with. Do not include this plotting code in your `hw5_stacks-pipeline_[LASTNAME].txt` file. Instead, please include the code for your plot in a file named: `hw5_pca_plot_code_[LASTNAME].txt`, and push that with your homework along with the plot in `.pdf` format named `hw5_pca_plot_[LASTNAME].pdf`.
+Using python or R (or another language of your choice*), make a scatter plot of the individuals, using the loadings from the `.evec` file and color-coding individuals by site. Feel free to do this plotting on Poseidon or your local computer, whatever you're most comfortable with. Do not include this plotting code in your `hw5_stacks-pipeline_[LASTNAME].txt` file. Instead, please include the code for your plot in a file named: `hw5_pca_plot_code_[LASTNAME].txt`, and push that with your homework along with the plot in `.pdf` format named `hw5_pca_plot_[LASTNAME].pdf`.
 
-What do you think about divergence in these stickleback populations?\
-Answer:
+\*But **do** script your plot - don't make it automatically in a GUI like Excel or SigmaPlot.
+
+What does the PCA tell you about divergence in these stickleback populations? (a few lines, a paragraph max)\
+>Answer:
+
+Look at the paper, if you haven't already. Thinking about the PCA and the statistics you calculated in Stacks, as well as your understanding of population genomics, how diverged are these populations? What do you think is driving this divergence? (a paragraph, two max)\
+>Answer:
 
 About how long did this homework take you?:\
-Answer:
+>Answer:
 
 For your homework, please push to GitHub:
 
