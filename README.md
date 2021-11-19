@@ -63,7 +63,7 @@ This will take approximately 2 hours on Poseidon using 4 threads.
 Remember to include (and comment!) the code you used to identify SNPs in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
 
 For each population, give the following information **pre-filtering**:\
-*Bear Paw:*\
+>*Bear Paw:*\
   Range of coverage depth (lowest and highest):\
   Polymorphic sites:\
   Private alleles:\
@@ -94,7 +94,7 @@ Note: I feel very strongly that it is a best practice to calculate linkage diseq
 Remember to include (and comment!) the code you used to filter SNPs in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
 
 Now that you have applied some QC for SNP coverage and completeness,give the following information again for each population:\
-*Bear Paw:*\
+>*Bear Paw:*\
   Range of coverage depth (lowest and highest):\
   Polymorphic sites:\
   Private alleles:\
@@ -112,7 +112,7 @@ What does this Fst tell you about connectivity among these two populations?
 >Answer:
 
 What are the following summary statistics for each population, calculated at variant sites only?\
-*Bear Paw:*\
+>*Bear Paw:*\
   Observed heterozygosity:\
   Expected heterozygosity:\
   Pi (nucleotide diversity):\
@@ -150,7 +150,7 @@ Format example:
 >96:62	1	0.0	96_62	T	G\
 110:20	1	0.0	110_20	A	G\
 110:28	1	0.0	110_28	A	C\
-180:304	1	0.0	180_304	A	T\
+180:304	1	0.0	180_304	A	T
 
 Open the par.example file and change the names of the input and output files according to how you have them named (input: `.snp`, `.geno`, `.ind`), or would like to have them named (output: `.evec`, `.eval`).
 
