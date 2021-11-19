@@ -58,7 +58,7 @@ Number of mismatches allowed between stacks (within individuals): 2\
 Number of mismatches allowed between loci (between individuals): 3\
 Number of threads to run on: 4 (be sure to run with slurm and request 4 nodes)
 
-This will take approximately 2 hours on Poseidon using 4 threads.
+This should take approximately 2 hours on Poseidon using 4 threads.
 
 Remember to include (and comment!) the code you used to identify SNPs in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
 
@@ -71,11 +71,14 @@ For each population, give the following information **pre-filtering**:
   Range of coverage depth (lowest and highest):\
   Polymorphic sites:\
   Private alleles:
-  
-What's the difference between a "locus" and a "SNP", as Stacks uses those terms?
+
+What's the difference between a "locus" and a "SNP", as Stacks uses those terms? (one to a few lines)
 >Answer:
 
-What does the "private alleles" count tell you?
+What does the "private alleles" count tell you? (one to a few lines)
+>Answer:
+
+What might explain any observed difference between the number of polymorphic sites and private alleles between the two populations? (one to a few lines)
 >Answer:
 
 # Step 4: Filter SNPs and calculate population genomic stats
@@ -89,17 +92,17 @@ Retain one SNP per locus (= RAD tag) at random \
 Calculate F-statistics\
 Export files in vcf and Genepop formats
 
+This should run very quickly on Poseidon (<15 minutes).
+
 Note: I feel very strongly that it is a best practice to calculate linkage disequilibrium directly rather than assuming your SNPs are unlinked if you only use one per RAD tag. However, that is a standard practice, and in the interests of streamlining this HW, go ahead and use this standard approach which is already built into Stacks.
 
 Remember to include (and comment!) the code you used to filter SNPs in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
 
-Now that you have applied some QC for SNP coverage and completeness,give the following information again for each population:
+Now that you have applied some QC for SNP coverage and completeness, give the following information again for each population:
 >*Bear Paw:*\
-  Range of coverage depth (lowest and highest):\
   Polymorphic sites:\
   Private alleles:\
 *Rabbit Slough:*\
-  Range of coverage depth (lowest and highest):\
   Polymorphic sites:\
   Private alleles:
   
@@ -108,7 +111,7 @@ This analysis will create a number of output files. Explore them until you find 
 What is the Fst between the Bear Paw Lake and Rabbit Slough populations?
 >Answer:
 
-What does this Fst tell you about connectivity among these two populations?
+What does this Fst suggest about connectivity between these two populations? (one to a few lines)
 >Answer:
 
 What are the following summary statistics for each population, calculated at variant sites only?
@@ -122,6 +125,9 @@ What are the following summary statistics for each population, calculated at var
   Expected heterozygosity:\
   Pi (nucleotide diversity):\
   Fis (inbreeding coefficient):
+  
+What do these values suggest about genetic diversity between these two populations? (one to a few lines)
+>Answer:
 
 # Step 5: Convert file format and run PCA
 
@@ -170,14 +176,14 @@ p-value:
 
 The `.evec` files gives the PC loading for each sample on the first 10 principal components axes. Axes are labeled by their eigenvalues, ordered from highest (= most influence on population structure) to lowest.
 
-Using python or R (or another language of your choice*), make a scatter plot of the individuals, using the loadings from the `.evec` file and color-coding individuals by site. Feel free to do this plotting on Poseidon or your local computer, whatever you're most comfortable with. Do not include this plotting code in your `hw5_stacks-pipeline_[LASTNAME].txt` file. Instead, please include the code for your plot in a file named: `hw5_pca_plot_code_[LASTNAME].txt`, and push that with your homework along with the plot in `.pdf` format named `hw5_pca_plot_[LASTNAME].pdf`.
+Using python or R (or another language of your choice*), make a scatter plot of the individuals for PC1 and PC2, using the loadings from the `.evec` file and color-coding individuals by site. (Hint: you may need to modify the `.evec` file to get your plotting program of choice to read it properly.) Feel free to do this plotting on Poseidon or your local computer, whatever you're most comfortable with. Please include the code for your plot in a file named: `hw5_pca_plot_code_[LASTNAME].txt`, and push that with your homework along with the plot in `.pdf` format named `hw5_pca_plot_[LASTNAME].pdf`.
 
 \*But **do** script your plot - don't make it automatically in a GUI like Excel or SigmaPlot.
 
-What does the PCA tell you about divergence in these stickleback populations? (a few lines, a paragraph max)
+What does the PCA tell you about divergence and diversity in these stickleback populations? (a few lines, a paragraph max)
 >Answer:
 
-Look at the paper, if you haven't already. Thinking about the PCA and the statistics you calculated in Stacks, as well as your understanding of population genomics, how diverged are these populations? What do you think is driving this divergence? (a paragraph, two max)
+Look at the paper, if you haven't already. Thinking about the PCA and the statistics you calculated in Stacks, as well as your understanding of population genomics, what do you think is driving observed patterns of divergence and diversity in these stickleback populations? (a paragraph, two max)
 >Answer:
 
 About how long did this homework take you?:
@@ -189,5 +195,5 @@ For your homework, please push to GitHub:
 2. `hw5_answers_[LASTNAME].md`: An annotated copy of this readme file including your answers.
 3. `hw5_stacks_[LASTNAME].yml`: A succinct yaml file that can be used to set up the environment to run your pipeline.
 4. `hw5_pca_log_[LASTNAME].log`: The logfile from running smartpca.
-5. `hw5_pca_plot_code_[LASTNAME].txt`: Commented code in R or python for PCA plotting.
+5. `hw5_pca_plot_code_[LASTNAME].txt`: Commented code for PCA plotting.
 6. `hw5_pca_plot_[LASTNAME].pdf`: PCA plot.
