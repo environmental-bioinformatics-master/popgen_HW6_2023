@@ -14,11 +14,9 @@ Please copy this document and change the name to `hw5_answers_[LASTNAME].md`, an
 
 # Step 1: Set up
 
-First, set up a conda environment called `stacks` with which to run this HW. Install Stacks (duh), SRA tools to retrieve the raw sequences, and eigensoft to run a PCA with your clean SNPs. When you set up this environment, specifically install the most recent version of each program. (Hint: Check the conda install pages.) What code did you use to set this environment up?
-```
-```
+First, set up a conda environment called `stacks` with which to run this HW. Install Stacks (duh), SRA tools to retrieve the raw sequences, and eigensoft to run a PCA with your clean SNPs. When you set up this environment, specifically install the most recent conda version of each program. (Hint: Check the conda install pages.) Create a yaml file called `hw5_stacks_[LASTNAME].yml` that can be used to set up this environment - please make sure it is clean and understandable, and only lists the packages you need to install independently (and **not** all of the dependencies that are installed along with them). You can export this environment (hint: see HW4A) or write the file from scratch.
 
-Next, set up a slurm script called `hw5_stacks-pipeline_[LASTNAME].txt`. Put **every** command you run for this HW, except for the plotting at the very end, into this file to create a pipeline that can be run on Poseidon. For example, if you need to reformat a file for use in the pipeline, include the code you used to reformat that file. Comment it clearly, so it is obvious what is being done at every step. In the end, I want a script that I can run on Poseidon as-is, starting with file retrieval and ending with population genomics statistics and PCA, assuming I first use your conda environment set-up code above to create and activate the appropriate environment.
+Next, set up a slurm script called `hw5_stacks-pipeline_[LASTNAME].txt`. Put **every** command you run for this HW through all of the Stacks analyses into this file to create a pipeline that can be run on Poseidon. For example, if you need to reformat a file for use in the pipeline, include the code you used to reformat that file. Comment it clearly, so it is obvious what is being done at every step. In the end, I want a script that I can run on Poseidon as-is, starting with file retrieval and ending with Stacks output, assuming I first use your yaml file above to create the appropriate environment. (You'll need to modify a few files to run smartpca later on; you can do this however you like and don't need to include these conversions in your pipeline script.)
 
 Next, get the raw reads from the SRA. You want this file:
 `SRR034310`
@@ -28,10 +26,10 @@ These are RAD-derived reads, so rather than retrieving a single demultiplexed fi
 There is more information on individual samples, their barcodes, etc in a file available at Zenodo, a popular data-archiving site. That information is here:\
 `https://zenodo.org/record/1134547/files/Details_Barcode_Population_SRR034310.txt`
 
-Copy this file from the web to this repo. You'll need some of this information to process your reads, but note that you will have to modify this format for downstream use. (Hint: `sed` will be very useful!) Make sure to include all code you use to copy / modify these data for downstream use in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
+Copy this file from the web to this repo. You'll need some of this information to process your reads, but note that you will have to modify this format for downstream use. (Hint: `sed` or `awk` might be useful!) Make sure to include all code you use to copy / modify these data for downstream use in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
 
 Remember to include (and comment!) the code you used to retrieve these files in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
-
+ 
 
 # Step 2: Demultiplex reads
 
@@ -41,10 +39,12 @@ Clean reads\
 Discard low-quality reads\
 "Rescue" reads and barcodes
 
+Hint: for reasons irritating and unknown to me, if you ask Stacks to write data to a directory that doesn't exist, it will throw an error. Save yourself some hassle and create an empty output directory before running Stacks.
+
 Remember to include (and comment!) the code you used to demultiplex your reads in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
 
 What percentage of reads were retained after demultiplexing?\
-Answer:
+>Answer:
 
 # Step 3: Identify SNPs
 
@@ -140,14 +140,23 @@ To run smartpca, you need 4 files:\
 
 To create the input `.ind` file, modify the `.ind` file created during the file conversion process. Change the third column from `POP` to the name of the population the sample is from. The column in between the sample names and the population names (which is "U" for every individual) is required information on the sex of each individual, and can be M(ale), F(emale), or U(nknown).
 
+Format example:
+>Sample_1	U	Pop_1
+Sample_2	U	Pop_1
+Sample_3	U	Pop_2
+
 To create the input `.snp` file, modify the `.snp` file created during the file conversion process. Change the second column (which gives the chromosome number - or in this case, the stack number) to `1` for all samples. Because we are not defining SNPs by their position in a reference genome, changing everything to `1` will allow the program to run without this reference information. (If you don't do this, you'll get a segmentation fault.)
+
+Format example:
+>96:62	1	0.0	96_62	T	G
+110:20	1	0.0	110_20	A	G
+110:28	1	0.0	110_28	A	C
+180:304	1	0.0	180_304	A	T
 
 Open the par.example file and change the names of the input and output files according to how you have them named (input: `.snp`, `.geno`, `.ind`), or would like to have them named (output: `.evec`, `.eval`).
 
 Run smartpca by specifying the `par.*` parameter file, and redirecting the output (which will include a lot of good stats and stuff) to a new output logfile:\
-`smartpca -p par.[PAR_FILENAME] > [OUTFILE_NAME]_log.txt`
-
-Remember to include (and comment!) the code you used to create the smartpca input files and run smartpca in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
+`smartpca -p par.[PAR_FILENAME] > hw5_pca_log_[LASTNAME].log`
 
 Now, let's take a look! We are most interested in the individual PC loadings in the `*.evec` file and in some of the tests shown in the `log.txt` file.
 
@@ -177,7 +186,9 @@ About how long did this homework take you?:\
 
 For your homework, please push to GitHub:
 
-1. `hw5_stacks-pipeline_[LASTNAME].txt`: COMPLETE, commented code you used to run all Stacks and smartpca analyses
+1. `hw5_stacks-pipeline_[LASTNAME].txt`: COMPLETE, commented code you used from file retrieval through running Stacks (excluding PCA and plotting).
 2. `hw5_answers_[LASTNAME].md`: An annotated copy of this readme file including your answers.
-3. `hw5_pca_plot_code_[LASTNAME].txt`: Commented code in R or python for PCA plotting
-4. `hw5_pca_plot_[LASTNAME].pdf`: PCA plot
+3. `hw5_stacks_[LASTNAME].yml`: A succinct yaml file that can be used to set up the environment to run your pipeline.
+4. `hw5_pca_log_[LASTNAME].log`: The logfile from running smartpca.
+5. `hw5_pca_plot_code_[LASTNAME].txt`: Commented code in R or python for PCA plotting.
+6. `hw5_pca_plot_[LASTNAME].pdf`: PCA plot.
