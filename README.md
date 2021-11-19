@@ -42,7 +42,7 @@ Hint: for reasons irritating and unknown to me, if you ask Stacks to write data 
 
 Remember to include (and comment!) the code you used to demultiplex your reads in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
 
-What percentage of reads were retained after demultiplexing?\
+What percentage of reads were retained after demultiplexing?
 >Answer:
 
 # Step 3: Identify SNPs
@@ -62,7 +62,7 @@ This will take approximately 2 hours on Poseidon using 4 threads.
 
 Remember to include (and comment!) the code you used to identify SNPs in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
 
-For each population, give the following information **pre-filtering**:\
+For each population, give the following information **pre-filtering**:
 >*Bear Paw:*\
   Range of coverage depth (lowest and highest):\
   Polymorphic sites:\
@@ -93,7 +93,7 @@ Note: I feel very strongly that it is a best practice to calculate linkage diseq
 
 Remember to include (and comment!) the code you used to filter SNPs in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
 
-Now that you have applied some QC for SNP coverage and completeness,give the following information again for each population:\
+Now that you have applied some QC for SNP coverage and completeness,give the following information again for each population:
 >*Bear Paw:*\
   Range of coverage depth (lowest and highest):\
   Polymorphic sites:\
@@ -105,13 +105,13 @@ Now that you have applied some QC for SNP coverage and completeness,give the fol
   
 This analysis will create a number of output files. Explore them until you find the overall pairwise Fst between the two populations, and summary statistics (Fis, Pi, expected and observed heterozygo) for each population.
 
-What is the Fst between the Bear Paw Lake and Rabbit Slough populations?\
+What is the Fst between the Bear Paw Lake and Rabbit Slough populations?
 >Answer:
 
 What does this Fst tell you about connectivity among these two populations?
 >Answer:
 
-What are the following summary statistics for each population, calculated at variant sites only?\
+What are the following summary statistics for each population, calculated at variant sites only?
 >*Bear Paw:*\
   Observed heterozygosity:\
   Expected heterozygosity:\
@@ -161,12 +161,12 @@ Now, let's take a look! We are most interested in the individual PC loadings in 
 
 In the `*log.txt` file, look for the row starting with `## Tracy-Widom statistics`. This gives the eigenvalue (percentage of variance explained) and significance for each numbered principal components axis.
 
-How many principal components axes are significant?\
+How many principal components axes are significant?
 >Answer:
 
-For each significant principal components axis, give the following:\
+For each significant principal components axis, give the following:
 >Eigenvalue:\
->p-value:
+p-value:
 
 The `.evec` files gives the PC loading for each sample on the first 10 principal components axes. Axes are labeled by their eigenvalues, ordered from highest (= most influence on population structure) to lowest.
 
@@ -174,13 +174,13 @@ Using python or R (or another language of your choice*), make a scatter plot of 
 
 \*But **do** script your plot - don't make it automatically in a GUI like Excel or SigmaPlot.
 
-What does the PCA tell you about divergence in these stickleback populations? (a few lines, a paragraph max)\
+What does the PCA tell you about divergence in these stickleback populations? (a few lines, a paragraph max)
 >Answer:
 
-Look at the paper, if you haven't already. Thinking about the PCA and the statistics you calculated in Stacks, as well as your understanding of population genomics, how diverged are these populations? What do you think is driving this divergence? (a paragraph, two max)\
+Look at the paper, if you haven't already. Thinking about the PCA and the statistics you calculated in Stacks, as well as your understanding of population genomics, how diverged are these populations? What do you think is driving this divergence? (a paragraph, two max)
 >Answer:
 
-About how long did this homework take you?:\
+About how long did this homework take you?:
 >Answer:
 
 For your homework, please push to GitHub:
