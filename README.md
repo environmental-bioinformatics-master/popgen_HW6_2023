@@ -1,5 +1,4 @@
-# HW5_stacks
-HW5 - Stacks pipeline and population genomics
+# HW5 - Stacks pipeline and population genomics
 
 For this homework, we're going to use the Stacks pipeline to identify and genotype SNPs in two populations of threespine sticklebacks (*Gasterosteus aculeatus*), and perform some basic population genomic comparisons. Use the Stacks protocol (`Rochette & Catchen 2017.pdf`) and website (`http://catchenlab.life.illinois.edu/stacks/`) for guidance on how to process samples; you are also welcome to use any other online resources you like.
 
@@ -141,17 +140,17 @@ To run smartpca, you need 4 files:\
 To create the input `.ind` file, modify the `.ind` file created during the file conversion process. Change the third column from `POP` to the name of the population the sample is from. The column in between the sample names and the population names (which is "U" for every individual) is required information on the sex of each individual, and can be M(ale), F(emale), or U(nknown).
 
 Format example:
->Sample_1	U	Pop_1
-Sample_2	U	Pop_1
+>Sample_1	U	Pop_1\
+Sample_2	U	Pop_1\
 Sample_3	U	Pop_2
 
 To create the input `.snp` file, modify the `.snp` file created during the file conversion process. Change the second column (which gives the chromosome number - or in this case, the stack number) to `1` for all samples. Because we are not defining SNPs by their position in a reference genome, changing everything to `1` will allow the program to run without this reference information. (If you don't do this, you'll get a segmentation fault.)
 
 Format example:
->96:62	1	0.0	96_62	T	G
-110:20	1	0.0	110_20	A	G
-110:28	1	0.0	110_28	A	C
-180:304	1	0.0	180_304	A	T
+>96:62	1	0.0	96_62	T	G\
+110:20	1	0.0	110_20	A	G\
+110:28	1	0.0	110_28	A	C\
+180:304	1	0.0	180_304	A	T\
 
 Open the par.example file and change the names of the input and output files according to how you have them named (input: `.snp`, `.geno`, `.ind`), or would like to have them named (output: `.evec`, `.eval`).
 
