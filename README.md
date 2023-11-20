@@ -58,7 +58,7 @@ Number of mismatches allowed between stacks (within individuals): 2\
 Number of mismatches allowed between loci (between individuals): 3\
 Number of threads to run on: 4 (be sure to run with slurm and request 4 nodes)
 
-This should take approximately 2 hours on Poseidon using 4 threads.
+This should take approximately 2 hours on Poseidon using 4 threads (but give yourself some buffer time).
 
 Remember to include (and comment!) the code you used to identify SNPs in your `hw6_stacks-pipeline_[LASTNAME].txt` file.
 
