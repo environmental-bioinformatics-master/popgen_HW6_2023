@@ -133,7 +133,7 @@ What do these values suggest about genetic diversity between these two populatio
 
 There are a lot of different places you could go with your SNP panel from here. We're going to use the eigensoft program to conduct a Principal Components Analysis of the cleaned SNPs you generated with Stacks. Unfortunately, like almost every population genomics software, it requires a special input format. I have provided two python scripts written by Iain Mathieson to convert your Stacks-generated `.vcf` file to the multiple input files required by eigensoft.
 
-Convert your Stacks-provided `.vcf` file by using `vcf2eigensoft_v2.py`. The other file, `gdc.py`, contains functions that will be called by `vcf2eigensoft.py` so it needs to be in the same directory for the conversion to work.
+Convert your Stacks-provided `.vcf` file by using `vcf2eigensoft_v2.py`. The other file, `gdc.py`, contains functions that will be called by `vcf2eigensoft_v2.py` so it needs to be in the same directory for the conversion to work.
 
 Now, run some basic population genomics tests using the smartpca component of eigensoft. Be sure to submit this using slurm or after requesting time with srun so you can restrict the number of nodes it runs on - smartpca is greedy and will run on 35 threads if you let it!
 
@@ -168,7 +168,7 @@ p-value:
 
 The `.evec` files gives the PC loading for each sample on the first 10 principal components axes. Axes are labeled by their eigenvalues, ordered from highest (= most influence on population structure) to lowest.
 
-Using python or R (or another language of your choice*), make a scatter plot of the individuals for PC1 and PC2, using the loadings from the `.evec` file and color-coding individuals by site. (Hint: you may need to modify the `.evec` file to get your plotting program of choice to read it properly.) Feel free to do this plotting on Poseidon or your local computer, whatever you're most comfortable with. Please include the code for your plot in a file named: `hw6_pca_plot_code_[LASTNAME].txt`, and push that with your homework along with the plot in `.pdf` format named `hw6_pca_plot_[LASTNAME].pdf`.
+Using python or R (or another language of your choice*), make a scatter plot of the individuals for PC1 and PC2, using the loadings from the `.evec` file and color-coding individuals by site. (Hint: you may need to modify the `.evec` file to get your plotting program of choice to read it properly.) Feel free to do this plotting on Poseidon or your local computer, whatever you're most comfortable with. Please include the code for your plot in a file named: `hw6_pca_plot_code_[LASTNAME].[EXTENSION]`, and push that with your homework along with the plot in `.pdf` format named `hw6_pca_plot_[LASTNAME].pdf`.
 
 \*But **do** script your plot - don't make it automatically in a GUI like Excel or SigmaPlot.
 
@@ -187,5 +187,5 @@ For your homework, please push to GitHub:
 2. `hw6_answers_[LASTNAME].md`: An annotated copy of this readme file including your answers.
 3. `hw6_stacks_[LASTNAME].yml`: A succinct yaml file that can be used to set up the environment to run your pipeline.
 4. `hw6_pca_log_[LASTNAME].log`: The logfile from running smartpca.
-5. `hw6_pca_plot_code_[LASTNAME].txt`: Commented code for PCA plotting.
+5. `hw6_pca_plot_code_[LASTNAME].[EXTENSION]`: Commented code for PCA plotting.
 6. `hw6_pca_plot_[LASTNAME].pdf`: PCA plot.
