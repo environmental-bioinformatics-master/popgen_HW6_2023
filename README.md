@@ -9,13 +9,13 @@ I will give you a bare-bones walkthrough of the analyses to perform and the para
 
 The samples we'll use are single-end reads from two Alaskan stickleback populations, 8 individuals each from Bear Paw Lake (freshwater) and Rabbit Slough (marine). They derive from Hohenlohe et al. 2010, which is included in this repo if you want more details.
 
-Please copy this document and change the name to `hw5_answers_[LASTNAME].md`, and reply in the document as prompted. We'll also ask you to create and save a few additional files to be pushed with your HW repo. Everything we want you to submit is listed at the bottom of this document.
+Please copy this document and change the name to `hw6_answers_[LASTNAME].md`, and reply in the document as prompted. We'll also ask you to create and save a few additional files to be pushed with your HW repo. Everything we want you to submit is listed at the bottom of this document.
 
 # Step 1: Set up
 
-First, set up a conda environment called `stacks` with which to run this HW. Install Stacks (duh), SRA tools to retrieve the raw sequences, and eigensoft to run a PCA with your clean SNPs. When you set up this environment, specifically install the most recent conda version of each program. (Hint: Check the conda install pages.) Create a yaml file called `hw5_stacks_[LASTNAME].yml` that can be used to set up this environment - please make sure it is succinct and tidy, specifies version numbers, and only lists the packages you need to install independently (and **not** all of the extra dependencies that are installed along with them). You can export this environment (hint: see HW4A) or write the file from scratch.
+First, set up a conda environment called `stacks` with which to run this HW. Install Stacks (duh), SRA tools to retrieve the raw sequences, and eigensoft to run a PCA with your clean SNPs. When you set up this environment, specifically install the most recent conda version of each program. (Hint: Check the conda install pages.) Create a yaml file called `hw6_stacks_[LASTNAME].yml` that can be used to set up this environment - please make sure it is succinct and tidy, specifies version numbers, and only lists the packages you need to install independently (and **not** all of the extra dependencies that are installed along with them).
 
-Next, set up a slurm script called `hw5_stacks-pipeline_[LASTNAME].txt`. Put **every** command you run for this HW through all of the Stacks analyses into this file to create a pipeline that can be run on Poseidon. For example, if you need to reformat a file for use in the pipeline, include the code you used to reformat that file. Comment it clearly, so it is obvious what is being done at every step. In the end, I want a script that I can run on Poseidon as-is, starting with file retrieval and ending with Stacks output, assuming I first use your yaml file above to create the appropriate environment. (You'll need to modify a few files to run smartpca later on; you can do this however you like and don't need to include these conversions in your pipeline script.)
+Next, set up a slurm script called `hw6_stacks-pipeline_[LASTNAME].txt`. Put **every** command you run for this HW through all of the Stacks analyses into this file to create a pipeline that can be run on Poseidon. For example, if you need to reformat a file for use in the pipeline, include the code you used to reformat that file. Comment it clearly, so it is obvious what is being done at every step. In the end, I want a script that I can run on Poseidon as-is, starting with file retrieval and ending with Stacks output, assuming I first use your yaml file above to create the appropriate environment. (You'll need to modify a few files to run smartpca later on; you can do this however you like and don't need to include these conversions in your pipeline script.)
 
 Next, get the raw reads from the SRA. You want this file:
 `SRR034310`
@@ -25,9 +25,9 @@ These are RAD-derived reads, so rather than retrieving a single demultiplexed fi
 There is more information on individual samples, their barcodes, etc in a file available at Zenodo, a popular data-archiving site. That information is here:\
 `https://zenodo.org/record/1134547/files/Details_Barcode_Population_SRR034310.txt`
 
-Copy this file from the web to this repo. You'll need some of this information to process your reads, but note that you will have to modify this format for downstream use. (Hint: `sed` or `awk` might be useful!) Make sure to include all code you use to copy / modify these data for downstream use in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
+Copy this file from the web to this repo. You'll need some of this information to process your reads, but note that you will have to modify this format for downstream use. (Hint: `sed` or `awk` might be useful!) Make sure to include all code you use to copy / modify these data for downstream use in your `hw6_stacks-pipeline_[LASTNAME].txt` file.
 
-Remember to include (and comment!) the code you used to retrieve these files in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
+Remember to include (and comment!) the code you used to retrieve these files in your `hw6_stacks-pipeline_[LASTNAME].txt` file.
  
 
 # Step 2: Demultiplex reads
@@ -40,7 +40,7 @@ Discard low-quality reads\
 
 Hint: for reasons irritating and unknown to me, if you ask Stacks to write data to a directory that doesn't exist, it will throw an error. Save yourself some hassle and create an empty output directory before running Stacks.
 
-Remember to include (and comment!) the code you used to demultiplex your reads in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
+Remember to include (and comment!) the code you used to demultiplex your reads in your `hw6_stacks-pipeline_[LASTNAME].txt` file.
 
 What percentage of reads were retained after demultiplexing?
 >Answer:
@@ -60,7 +60,7 @@ Number of threads to run on: 4 (be sure to run with slurm and request 4 nodes)
 
 This should take approximately 2 hours on Poseidon using 4 threads.
 
-Remember to include (and comment!) the code you used to identify SNPs in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
+Remember to include (and comment!) the code you used to identify SNPs in your `hw6_stacks-pipeline_[LASTNAME].txt` file.
 
 For each population, give the following information **pre-filtering**:
 >*Bear Paw:*\
@@ -96,7 +96,7 @@ This should run very quickly on Poseidon (<15 minutes).
 
 Note: I feel very strongly that it is a best practice to calculate linkage disequilibrium directly rather than assuming your SNPs are unlinked if you only use one per RAD tag. However, that is a standard practice, and in the interests of streamlining this HW, go ahead and use this standard approach which is already built into Stacks.
 
-Remember to include (and comment!) the code you used to filter SNPs in your `hw5_stacks-pipeline_[LASTNAME].txt` file.
+Remember to include (and comment!) the code you used to filter SNPs in your `hw6_stacks-pipeline_[LASTNAME].txt` file.
 
 Now that you have applied some QC for SNP coverage and completeness, give the following information again for each population:
 >*Bear Paw:*\
@@ -161,7 +161,7 @@ Format example:
 Open the par.example file and change the names of the input and output files according to how you have them named (input: `.snp`, `.geno`, `.ind`), or would like to have them named (output: `.evec`, `.eval`).
 
 Run smartpca by specifying the `par.*` parameter file, and redirecting the output (which will include a lot of good stats and stuff) to a new output logfile:\
-`smartpca -p par.[PAR_FILENAME] > hw5_pca_log_[LASTNAME].log`
+`smartpca -p par.[PAR_FILENAME] > hw6_pca_log_[LASTNAME].log`
 
 Now, let's take a look! We are most interested in the individual PC loadings in the `*.evec` file and in some of the tests shown in the `log.txt` file.
 
@@ -176,7 +176,7 @@ p-value:
 
 The `.evec` files gives the PC loading for each sample on the first 10 principal components axes. Axes are labeled by their eigenvalues, ordered from highest (= most influence on population structure) to lowest.
 
-Using python or R (or another language of your choice*), make a scatter plot of the individuals for PC1 and PC2, using the loadings from the `.evec` file and color-coding individuals by site. (Hint: you may need to modify the `.evec` file to get your plotting program of choice to read it properly.) Feel free to do this plotting on Poseidon or your local computer, whatever you're most comfortable with. Please include the code for your plot in a file named: `hw5_pca_plot_code_[LASTNAME].txt`, and push that with your homework along with the plot in `.pdf` format named `hw5_pca_plot_[LASTNAME].pdf`.
+Using python or R (or another language of your choice*), make a scatter plot of the individuals for PC1 and PC2, using the loadings from the `.evec` file and color-coding individuals by site. (Hint: you may need to modify the `.evec` file to get your plotting program of choice to read it properly.) Feel free to do this plotting on Poseidon or your local computer, whatever you're most comfortable with. Please include the code for your plot in a file named: `hw6_pca_plot_code_[LASTNAME].txt`, and push that with your homework along with the plot in `.pdf` format named `hw6_pca_plot_[LASTNAME].pdf`.
 
 \*But **do** script your plot - don't make it automatically in a GUI like Excel or SigmaPlot.
 
@@ -191,9 +191,9 @@ About how long did this homework take you?:
 
 For your homework, please push to GitHub:
 
-1. `hw5_stacks-pipeline_[LASTNAME].txt`: COMPLETE, commented code you used from file retrieval through running Stacks (excluding PCA and plotting).
-2. `hw5_answers_[LASTNAME].md`: An annotated copy of this readme file including your answers.
-3. `hw5_stacks_[LASTNAME].yml`: A succinct yaml file that can be used to set up the environment to run your pipeline.
-4. `hw5_pca_log_[LASTNAME].log`: The logfile from running smartpca.
-5. `hw5_pca_plot_code_[LASTNAME].txt`: Commented code for PCA plotting.
+1. `hw6_stacks-pipeline_[LASTNAME].txt`: COMPLETE, commented code you used from file retrieval through running Stacks (excluding PCA and plotting).
+2. `hw6_answers_[LASTNAME].md`: An annotated copy of this readme file including your answers.
+3. `hw6_stacks_[LASTNAME].yml`: A succinct yaml file that can be used to set up the environment to run your pipeline.
+4. `hw6_pca_log_[LASTNAME].log`: The logfile from running smartpca.
+5. `hw6_pca_plot_code_[LASTNAME].txt`: Commented code for PCA plotting.
 6. `hw5_pca_plot_[LASTNAME].pdf`: PCA plot.
