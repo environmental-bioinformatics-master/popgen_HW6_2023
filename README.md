@@ -196,4 +196,4 @@ For your homework, please push to GitHub:
 3. `hw6_stacks_[LASTNAME].yml`: A succinct yaml file that can be used to set up the environment to run your pipeline.
 4. `hw6_pca_log_[LASTNAME].log`: The logfile from running smartpca.
 5. `hw6_pca_plot_code_[LASTNAME].txt`: Commented code for PCA plotting.
-6. `hw5_pca_plot_[LASTNAME].pdf`: PCA plot.
+6. `hw6_pca_plot_[LASTNAME].pdf`: PCA plot.
