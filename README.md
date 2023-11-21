@@ -157,7 +157,7 @@ Now, let's take a look! We are most interested in the individual PC loadings in 
 
 In the `*log.txt` file, look for the row starting with `## Tracy-Widom statistics`. This gives the eigenvalue (percentage of variance explained) and significance for each numbered principal components axis.
 
-How many principal components axes are significant?
+How many principal components axes are significant at p < 0.05?
 >Answer:
 
 For each significant principal components axis, give the following:
@@ -176,7 +176,7 @@ What does the PCA tell you about divergence and diversity in these stickleback p
 Look at the paper, if you haven't already. Thinking about the PCA and the statistics you calculated in Stacks, as well as your understanding of population genomics, what do you think is driving observed patterns of divergence and diversity in these stickleback populations? (a paragraph, two max)
 >Answer:
 
-About how long did this homework take you?:
+About how long did this homework take you? (Active time only, don't count "passive" time waiting for things to run on Poseidon):
 >Answer:
 
 For your homework, please push to GitHub:
