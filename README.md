@@ -58,13 +58,13 @@ Number of mismatches allowed between stacks (within individuals): 2\
 Number of mismatches allowed between loci (between individuals): 3\
 Number of threads to run on: 4 (be sure to run with slurm and request 4 nodes)
 
-This should take approximately 2 hours on Poseidon using 4 threads (but give yourself some buffer time).
+This should take approximately 4-5 hours on Poseidon using 4 threads (but give yourself some buffer time).
 
 Remember to include (and comment!) the code you used to identify SNPs in your `hw6_stacks-pipeline_[LASTNAME].txt` file.
 
 For each population, give the following information **pre-filtering**:
 >*Bear Paw:*\
-  Range of coverage depth (lowest and highest):\
+  Range of coverage depth (lowest and highest): \
   Polymorphic sites:\
   Private alleles:\
 *Rabbit Slough:*\
@@ -118,12 +118,10 @@ What are the following summary statistics for each population, calculated at var
 >*Bear Paw:*\
   Observed heterozygosity:\
   Expected heterozygosity:\
-  Pi (nucleotide diversity):\
   Fis (inbreeding coefficient):\
 *Rabbit Slough:*\
   Observed heterozygosity:\
   Expected heterozygosity:\
-  Pi (nucleotide diversity):\
   Fis (inbreeding coefficient):
   
 What do these values suggest about genetic diversity between these two populations? (one to a few lines)
