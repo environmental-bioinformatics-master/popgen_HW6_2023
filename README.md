@@ -1,4 +1,5 @@
 # HW6 - Stacks pipeline and population genomics
+# DUE: 11:59PM, 1 Dec (Friday)
 
 For this homework, we're going to use the Stacks pipeline to identify and genotype SNPs in two populations of threespine sticklebacks (*Gasterosteus aculeatus*), and perform some basic population genomic comparisons. Use the Stacks protocol (`Rochette & Catchen 2017.pdf`) and website (`http://catchenlab.life.illinois.edu/stacks/`) for guidance on how to process samples; you are also welcome to use any other online resources you like.
 
