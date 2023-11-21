@@ -153,9 +153,9 @@ Open the par.example file and change the names of the input and output files acc
 Run smartpca by specifying the `par.*` parameter file, and redirecting the output (which will include a lot of good stats and stuff) to a new output logfile:\
 `smartpca -p par.[PAR_FILENAME] > hw6_pca_log_[LASTNAME].log`
 
-Now, let's take a look! We are most interested in the individual PC loadings in the `*.evec` file and in some of the tests shown in the `log.txt` file.
+Now, let's take a look! We are most interested in the individual PC loadings in the `*.evec` file and in some of the tests shown in the `*.log` file.
 
-In the `*log.txt` file, look for the row starting with `## Tracy-Widom statistics`. This gives the eigenvalue (percentage of variance explained) and significance for each numbered principal components axis.
+In the `*.log` file, look for the row starting with `## Tracy-Widom statistics`. This gives the eigenvalue (percentage of variance explained) and significance for each numbered principal components axis.
 
 How many principal components axes are significant at p < 0.05?
 >Answer:
@@ -166,7 +166,7 @@ p-value:
 
 The `.evec` files gives the PC loading for each sample on the first 10 principal components axes. Axes are labeled by their eigenvalues, ordered from highest (= most influence on population structure) to lowest.
 
-Using python or R (or another language of your choice*), make a scatter plot of the individuals for PC1 and PC2, using the loadings from the `.evec` file and color-coding individuals by site. (Hint: you may need to modify the `.evec` file to get your plotting program of choice to read it properly.) Feel free to do this plotting on Poseidon or your local computer, whatever you're most comfortable with. Please include the code for your plot in a file named: `hw6_pca_plot_code_[LASTNAME].[EXTENSION]`, and push that with your homework along with the plot in `.pdf` format named `hw6_pca_plot_[LASTNAME].pdf`.
+Using python or R (or another language of your choice*), make a scatter plot of the individuals for PC1 and PC2, using the loadings from the `.evec` file and color-coding individuals by site. (Hint: you will need to modify the `.evec` file to get your plotting program of choice to read it properly.) Feel free to do this plotting on Poseidon or your local computer, whatever you're most comfortable with. Please include the code for your plot in a file named: `hw6_pca_plot_code_[LASTNAME].[EXTENSION]`, and push that with your homework along with the plot in `.pdf` format named `hw6_pca_plot_[LASTNAME].pdf`.
 
 \*But **do** script your plot - don't make it automatically in a GUI like Excel or SigmaPlot.
 
